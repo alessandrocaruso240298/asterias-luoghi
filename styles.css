@@ -35,8 +35,8 @@ body {
 }
 
 .iframe {
-    width: 75%;
-    height: 65vw;
+    width: 90%;
+    height: 75vw;
     border-radius: 10px;
     box-shadow: 0 0 15px cyan;
     display: block;
@@ -45,6 +45,16 @@ body {
     margin-top: 15px;
     margin-bottom: auto;
 }
+
+a {
+    text-decoration: underline !important;
+    color: #007BFF;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
 
 
 .navbar a:hover { 
