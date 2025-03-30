@@ -1,38 +1,23 @@
-const translations = {
-    it: { visit: "🌍 Posti da Visitare", restaurants: "🍽️ Ristoranti", stations: "🚉 Stazioni Ferroviarie", port: "⛵ Porto" },
-    en: { visit: "🌍 Places to Visit", restaurants: "🍽️ Restaurants", stations: "🚉 Train Stations", port: "⛵ Port" },
-    de: { visit: "🌍 Sehenswürdigkeiten", restaurants: "🍽️ Restaurants", stations: "🚉 Bahnhöfe", port: "⛵ Hafen" },
-    fr: { visit: "🌍 Lieux à Visiter", restaurants: "🍽️ Restaurants", stations: "🚉 Gares", port: "⛵ Port" },
-    es: { visit: "🌍 Lugares para Visitar", restaurants: "🍽️ Restaurantes", stations: "🚉 Estaciones de Tren", port: "⛵ Puerto" },
-    ru: { visit: "🌍 Места для посещения", restaurants: "🍽️ Рестораны", stations: "🚉 Железнодорожные станции", port: "⛵ Порт" }
-};
+function openModal(imgElement) {
+    var modal = document.createElement('div');
+    modal.style.position = 'fixed';
+    modal.style.top = '0';
+    modal.style.left = '0';
+    modal.style.width = '100%';
+    modal.style.height = '100%';
+    modal.style.backgroundColor = 'rgba(0,0,0,0.8)';
+    modal.style.display = 'flex';
+    modal.style.alignItems = 'center';
+    modal.style.justifyContent = 'center';
+    modal.onclick = function() {
+      document.body.removeChild(modal);
+    };
 
-function updateLanguage(lang) {
-    document.querySelectorAll("[data-key]").forEach(el => {
-        const key = el.getAttribute("data-key");
-        if (translations[lang][key]) {
-            el.textContent = translations[lang][key];
-        }
-    });
-}
+    var modalImg = document.createElement('img');
+    modalImg.src = imgElement.src;
+    modalImg.style.maxWidth = '90%';
+    modalImg.style.maxHeight = '90%';
 
-document.querySelectorAll(".dropdown-menu li").forEach(item => {
-    item.addEventListener("click", function () {
-        const lang = this.getAttribute("data-lang");
-        
-        document.getElementById("selected-lang").innerHTML = this.innerHTML;
-        
-        const googleTranslateElement = new google.translate.TranslateElement({
-            pageLanguage: 'it',
-            includedLanguages: 'it,en,de,fr,es,ru',
-            autoDisplay: false
-        }, 'google_translate_element');
-        
-        googleTranslateElement.showBanner();
-        googleTranslateElement.translate(lang);
-        
-        document.querySelector(".custom-dropdown").classList.remove("active");
-    });
-});
-
-updateLanguage("it");
+    modal.appendChild(modalImg);
+    document.body.appendChild(modal);
+  }
