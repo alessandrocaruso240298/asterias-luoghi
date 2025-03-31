@@ -155,11 +155,10 @@ h2 {
 
 .restaurants-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Adatta le colonne */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 10px;
     justify-content: center;
-    padding: 10px 0 !important;
+    padding: 10px 0;
     max-width: 1200px;
     margin: 0 auto;
 }
-
